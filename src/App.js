@@ -9,6 +9,7 @@ import theme from './components/themeConfig'
 import Home from './components/Home'
 import UltimosLanzamientos from "./components/UltimosLanzamientos";
 import Populares from "./components/Populares";
+import Error404 from "./components/Error404";
 import Search from "./components/Search";
 import { Navbar } from "react-bootstrap";
 //import Carrusel from './components/Carrusel'
@@ -19,7 +20,9 @@ import { Navbar } from "react-bootstrap";
 //     borderRadius: 3,
 //     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     color: "white",
-    marginRight:'10px'
+   
+   
+ 
 //     height: 48,
 //     padding: "0 30px",
 
@@ -40,7 +43,7 @@ const App = () => {
 
         <AppBar className={classes.navbar}>
    <Toolbar> 
-      <Link to='/' className={classes.navitem}>Inicio</Link>
+      <Link to='/' className={classes.navitem} className='link-activo'>Inicio</Link>
 <Link to='/UltimosLanzamientos' className={classes.navitem}>Ultimos Lanzamientos</Link>
 <Link to='/Populares' className={classes.navitem}>Populares</Link>
 <Link to='/Buscar' className={classes.navitem}>Buscar</Link>
@@ -54,6 +57,7 @@ const App = () => {
           <Route exact path='/UltimosLanzamientos' component={UltimosLanzamientos} />
           <Route exact path='/Populares' component={Populares} />
           <Route exact path='/Buscar' component={Search} />
+          <Route  path='*' component={Error404} />
         </Switch>
       </Router>
 
