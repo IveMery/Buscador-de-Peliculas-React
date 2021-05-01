@@ -17,7 +17,7 @@ const UltimosLanzamientos = () => {
     }, [])
     return (
         <>
-            <Typography variant='h5' gutterBottom align='center' >Ultimos lanzamientos</Typography>
+            <Typography variant='h5' gutterBottom align='center'>Ultimos lanzamientos</Typography>
             <Box display="flex"
                 justifyContent='center'
                 border={1}
