@@ -1,0 +1,15 @@
+
+.link-activo:hover{
+    
+    text-decoration:none;
+    background-color: rgb(88, 88, 85);
+  
+    
+}
+.link-activo:visited{
+    color:white;
+    
+}
+.link-activo{
+    margin-right: 10px;
+}
