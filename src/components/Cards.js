@@ -29,7 +29,9 @@ const Cards = ({ title, poster_path }) => {
 
   const classes = useStyles();
 
+
   poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`
+
   return (
     <>
       <Card className={classes.root}>
@@ -43,10 +45,10 @@ const Cards = ({ title, poster_path }) => {
             <Typography gutterBottom variant="h6" component="h2">
               {title}
             </Typography>
-           </CardContent>
+          </CardContent>
         </CardActionArea>
         <CardActions>
-<Button size="small" color="primary">
+          <Button size="small" color="primary">
             <VisibilityOutlinedIcon />
           </Button>
         </CardActions>
