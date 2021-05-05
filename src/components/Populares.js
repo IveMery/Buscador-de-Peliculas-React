@@ -15,6 +15,13 @@ const Populares = () => {
                (setMoviesPopulares(data.results)))
     }, [])
 
+
+    
+    const handleClick =id=>{
+        console.log(` me hicienron click en la tarjeta con el id `,id);
+        
+            }
+
     return (
         <>
         <Typography variant='h5' gutterBottom align='center'>Populares</Typography>
@@ -28,7 +35,9 @@ const Populares = () => {
                 return <Cards
                     title={movie.title}
                     poster_path={movie.poster_path}
-                    key={movie.id} />
+                    key={movie.id} 
+                    id={movie.id}
+                    handleClick={handleClick}/>
             })}
             {/* backdrop_path */}
             <Cards />

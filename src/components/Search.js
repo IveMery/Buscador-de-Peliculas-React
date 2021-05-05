@@ -34,6 +34,10 @@ const Search = () => {
                     setMovies(data.results))
     }, [search])
 
+    const handleClick =id=>{
+        console.log(` me hicienron click en la tarjeta con el id `,id);
+        
+            }
 
     return (
         <div>
@@ -42,6 +46,7 @@ const Search = () => {
                 <TextField id="standard-basic"
                     placeholder=' ej los simpson...'
                     onChange={handleChange}
+                   
                  value={search}
                 />
             </form>
@@ -57,7 +62,9 @@ const Search = () => {
                         return <Cards
                             title={movie.title}
                             poster_path={movie.poster_path}
-                            key={movie.id} />
+                            key={movie.id} 
+                            id={movie.id}
+                            handleClick={handleClick}/>
                     })}
                     {/* backdrop_path */}
                     <Cards />
