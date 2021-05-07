@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import { AppBar, Toolbar } from "@material-ui/core";
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import theme from './components/themeConfig'
-//import { Button, Navbar, Nav, Form, NavLInk, FormControl } from 'react-bootstrap';
+
 
 import Home from './components/Home'
 import UltimosLanzamientos from "./components/UltimosLanzamientos";

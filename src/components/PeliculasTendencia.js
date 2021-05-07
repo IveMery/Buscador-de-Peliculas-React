@@ -20,12 +20,12 @@ const PeliculasTendencia = () => {
     return (
         <>
             <Typography variant='h5'
-                gutterBottom align='flex-start'
+                gutterBottom
                 color='primary'
             >Peliculas que son tendencia</Typography>
             <Box display="flex"
                 justifyContent='center'
-               // border={1}
+                // border={1}
                 flexWrap="wrap"
                 margin={2}
                 p={2}
@@ -37,9 +37,9 @@ const PeliculasTendencia = () => {
                         key={movie.id}
                         id={movie.id}
                         handleClick={handleClick} />
-                         
+
                 })}
-           
+
             </Box>
         </>
     )

@@ -59,7 +59,7 @@ const Search = () => {
                             id={movie.id}
                             handleClick={handleClick} />
                     })}
-                   
+
                 </Box>
             </>
         </div>

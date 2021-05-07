@@ -2,6 +2,7 @@
 import { Carousel } from 'react-bootstrap';
 import './Carrusel.css'
 import React, { useState, useEffect } from 'react';
+import CarruselCard from './CarruselCard'
 const Carrusel = () => {
   
 
@@ -11,21 +12,28 @@ const Carrusel = () => {
   useEffect(() => {
     fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=6c78ff8e971663d6ee470502622fe044&language=es-ES&page=1')
         .then(res => res.json())
-        .then(data =>console.log(data.results))
-            //setmovies(data.results))
+        .then(data =>//console.log(data.results))
+            setmovies(data.results))
 }, [])
 
 
-  // const handleClick = id => {
-  //       console.log(` me hicienron click en la tarjeta con el id `, id);
+  const handleClick = id => {
+        console.log(` me hicienron click en la tarjeta con el id `, id);
        
-  //   }
-
-
-    return (
+    }
+return (
         <div>
-         
-         <Carousel>
+         {/* {movies && movies.map((movie) => {
+                    return <CarruselCard
+                        title={movie.title}
+                        backdrop_path={movie.backdrop_path}
+                        key={movie.id}
+                        id={movie.id}
+                        handleClick={handleClick} />
+
+                })} */}
+
+  <Carousel>
         <Carousel.Item>
           <img
             className="d-block w-100 slider"
