@@ -9,10 +9,7 @@ const Search = () => {
     const [search, setSearch] = useState('')
     const [movies, setMovies] = useState([])
 
-    const handleChange = e => {
-        console.log(e.target.value);
-        setSearch(e.target.value)
-    }
+    const handleChange = e => setSearch(e.target.value)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -34,10 +31,7 @@ const Search = () => {
                     setMovies(data.results))
     }, [search])
 
-    const handleClick =id=>{
-        console.log(` me hicienron click en la tarjeta con el id `,id);
-        
-            }
+    const handleClick = id => console.log(` me hicienron click en la tarjeta con el id `, id);
 
     return (
         <div>
@@ -46,15 +40,14 @@ const Search = () => {
                 <TextField id="standard-basic"
                     placeholder=' ej los simpson...'
                     onChange={handleChange}
-                   
-                 value={search}
+                    value={search}
                 />
             </form>
             <>
                 <Typography variant='h5' gutterBottom align='center'>Resultados</Typography>
                 <Box display="flex"
                     justifyContent='center'
-                    border={1}
+                    //border={1}
                     flexWrap="wrap"
                     p={2}
                 >
@@ -62,12 +55,11 @@ const Search = () => {
                         return <Cards
                             title={movie.title}
                             poster_path={movie.poster_path}
-                            key={movie.id} 
+                            key={movie.id}
                             id={movie.id}
-                            handleClick={handleClick}/>
+                            handleClick={handleClick} />
                     })}
-                    {/* backdrop_path */}
-                    <Cards />
+                   
                 </Box>
             </>
         </div>

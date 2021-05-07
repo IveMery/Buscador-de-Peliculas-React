@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cards from './Cards'
-//import CssBaseline from '@material-ui/core
+
 
 import Typography from '@material-ui/core/Typography';
 
@@ -27,7 +27,7 @@ const Populares = () => {
         <Typography variant='h5' gutterBottom align='center'>Populares</Typography>
         <Box display="flex"
             justifyContent='center'
-            border={1}
+            //border={1}
             flexWrap="wrap"
             p={2}
         >
@@ -39,8 +39,8 @@ const Populares = () => {
                     id={movie.id}
                     handleClick={handleClick}/>
             })}
-            {/* backdrop_path */}
-            <Cards />
+           
+          
         </Box>
     </>
     )

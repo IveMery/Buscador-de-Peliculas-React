@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import './App.css';
 import { AppBar, Toolbar } from "@material-ui/core";
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
@@ -21,9 +20,6 @@ const useStyle = makeStyles({
     //     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     color: "white",
     marginRight: "20px",
-
-
-
     //     height: 48,
     //     padding: "0 30px",
 
@@ -31,7 +27,8 @@ const useStyle = makeStyles({
 
   navbar: {
     marginBottom: '0',
-    position: 'sticky'
+    position: 'sticky',
+    backgroundColor: 'rgb(54, 57, 63)'
   }
 })
 
@@ -42,17 +39,15 @@ const App = () => {
   return (
     <div>
       <Router>
-
         <AppBar className={classes.navbar}>
           <Toolbar>
             <Link to='/' className={classes.navitem} >Inicio</Link>
             <Link to='/UltimosLanzamientos' className={classes.navitem}>Ultimos Lanzamientos</Link>
             <Link to='/Populares' className={classes.navitem}>Populares</Link>
             <Link to='/Buscar' className={classes.navitem}>Buscar</Link>
+            🎬
           </Toolbar>
         </AppBar>
-
-
 
         <Switch>
           <Route exact path='/' component={Home} />
