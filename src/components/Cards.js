@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -10,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 
-const Cards = ({ title, poster_path }) => {
+const Cards = ({ title, poster_path, handleClick, id }) => {
 
 
   const useStyles = makeStyles({
@@ -24,15 +23,15 @@ const Cards = ({ title, poster_path }) => {
     media: {
       height: 340,
     },
-  });
-
+  })
 
   const classes = useStyles();
-
   poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`
+  const handClickDetalles = () => handleClick(id)
+
   return (
     <>
-      <Card className={classes.root}>
+      <Card className={classes.root} onClick={handClickDetalles}>
         <CardActionArea>
           <CardMedia
             className={classes.media}
@@ -43,10 +42,10 @@ const Cards = ({ title, poster_path }) => {
             <Typography gutterBottom variant="h6" component="h2">
               {title}
             </Typography>
-           </CardContent>
+          </CardContent>
         </CardActionArea>
         <CardActions>
-<Button size="small" color="primary">
+          <Button size="small" color="primary">
             <VisibilityOutlinedIcon />
           </Button>
         </CardActions>
