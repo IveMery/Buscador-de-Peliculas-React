@@ -1,71 +1,71 @@
-
-import { Carousel } from 'react-bootstrap';
-import './Carrusel.css'
 import React, { useState, useEffect } from 'react';
-import CarruselCard from './CarruselCard'
+import styled from 'styled-components'
+import { Carousel, Button } from 'react-bootstrap';
+
 const Carrusel = () => {
-  
 
   const [movies, setmovies] = useState([])
 
-  
+  const BASE_URL = `https://api.themoviedb.org/3/movie/now_playing?`
+  const apiKey = `api_key=6c78ff8e971663d6ee470502622fe044`
+  const lenguaje = `&languaje=es-ES`
+  const page = `&page=1`
+  const fetchCarousel = BASE_URL + apiKey + lenguaje + page
+
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=6c78ff8e971663d6ee470502622fe044&language=es-ES&page=1')
-        .then(res => res.json())
-        .then(data =>//console.log(data.results))
-            setmovies(data.results))
-}, [])
+    fetch(fetchCarousel)
+      .then(res => res.json()
+         .then(data =>//console.log(data.results)))
+          (setmovies(data.results))))
+  }, [])
+
+  const Img = styled.img`
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+`
+  const Div = styled.div`
+    background-color: #a7a7a7cf;
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    padding: 20px;`
+
+  // const Button = styled.button`
+
+  // `
 
 
-  const handleClick = id => {
-        console.log(` me hicienron click en la tarjeta con el id `, id);
-       
-    }
-return (
-        <div>
-         {/* {movies && movies.map((movie) => {
-                    return <CarruselCard
-                        title={movie.title}
-                        backdrop_path={movie.backdrop_path}
-                        key={movie.id}
-                        id={movie.id}
-                        handleClick={handleClick} />
+  return (
+    <Carousel>
+      {movies &&
+        movies.map(movie => {
+          const backdrop_path = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
+          const id = `/movie/${movie.id}`
 
-                })} */}
+          return (
+            <Carousel.Item>
+              <Img
+                className="d-block w-100 slider"
+                src={backdrop_path}
+                alt={movie.title}
+              />
+              <Carousel.Caption>
+                <Div>
+                  <h3>{movie.title}</h3>
+                  <p>{movie.overview}</p>
+                  <a href={id}><Button variant="primary">Ver mas...</Button></a>
+                </Div>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+    </Carousel>
 
-  <Carousel>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 slider"
-            src='https://clarovideocdn5.clarovideo.net/PELICULAS/LIARLIAR/EXPORTACION_WEB/SS/LIARLIARWHORIZONTAL.jpg?size=675x380'
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>asdf</h3>
-            <p>1</p>
-          </Carousel.Caption>
-          
-        </Carousel.Item>
-       
 
-        <Carousel.Item>
-          <img
-            className="d-block w-100 slider"
-            src='https://cdn.stayhappening.com/events1/banners/5c449a3e7b8662747c5ba51519910892b6fb7f80cb0cd688d8a976862b2a17a0-rimg-w526-h276-gmir.jpg?v=1617547436'
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>asdfg</h3>
-            <p>2</p>
-          </Carousel.Caption>
-          
-        </Carousel.Item>
-        
- </Carousel>
+  )
 
-               
-        </div>
-    )
-}
+
 
 export default Carrusel
