@@ -1,56 +1,70 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components'
+import { Carousel, Button } from 'react-bootstrap';
 
-import './Carrusel.css'
-import { Carousel } from 'react-bootstrap';
 const Carrusel = () => {
+
+  const [movies, setmovies] = useState([])
+
+  const BASE_URL = `https://api.themoviedb.org/3/movie/now_playing?`
+  const apiKey = `api_key=6c78ff8e971663d6ee470502622fe044`
+  const lenguaje = `&languaje=es-ES`
+  const page = `&page=1`
+  const fetchCarousel = BASE_URL + apiKey + lenguaje + page
+
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=6c78ff8e971663d6ee470502622fe044&languaje=es-ES&page=1')
-    .then(res =>res.json()
-    .then(data =>console.log(data.results)))
-})
+    fetch(fetchCarousel)
+      .then(res => res.json()
+         .then(data =>//console.log(data.results)))
+          (setmovies(data.results))))
+  }, [])
 
-  
-    return (
-        <div>
-            <Carousel>
-  <Carousel.Item>
-    <img
-      className="d-block w-100 slider"
-      src="https://www.neo2.com/wp-content/uploads/2020/05/Las-mejores-peliculas-de-2020-10.jpg"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100 slider"
-      src="https://www.elcomercio.com/files/article_main/uploads/2019/08/07/5d4b12a200af8.jpeg"
-      alt="Second slide"
-    />
+  const Img = styled.img`
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+`
+  const Div = styled.div`
+    background-color: #a7a7a7cf;
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    padding: 20px;`
 
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100 slider"
-      src="https://clarovideocdn5.clarovideo.net/PELICULAS/LIARLIAR/EXPORTACION_WEB/SS/LIARLIARWHORIZONTAL.jpg?size=675x380"
-      alt="Third slide"
-    />
+  // const Button = styled.button`
 
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
-        </div>
-    )
+  // `
+
+
+  return (
+    <Carousel>
+      {movies &&
+        movies.map(movie => {
+          const backdrop_path = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
+          const id = `/movie/${movie.id}`
+
+          return (
+            <Carousel.Item>
+              <Img
+                className="d-block w-100 slider"
+                src={backdrop_path}
+                alt={movie.title}
+              />
+              <Carousel.Caption>
+                <Div>
+                  <h3>{movie.title}</h3>
+                  <p>{movie.overview}</p>
+                  <a href={id}><Button variant="primary">Ver mas...</Button></a>
+                </Div>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+    </Carousel>
+
+
+  )
 }
 
 export default Carrusel
