@@ -1,8 +1,10 @@
 import TextField from '@material-ui/core/TextField';
 import React, { useState, useEffect } from 'react';
 import Cards from './Cards'
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box'
+import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+import { CentrarElementos, CentrarEnColumna, Title, Div } from './Commons'
+import { Link } from 'react-router-dom'
 
 const Search = () => {
 
@@ -31,38 +33,62 @@ const Search = () => {
                     setMovies(data.results))
     }, [search])
 
-    const handleClick = id => console.log(` me hicienron click en la tarjeta con el id `, id);
+    const useStyles = makeStyles({
+        TextField: {
+
+            width: 500,
+            marginTop: 30,
+
+
+
+
+        },
+
+    })
+    const classes = useStyles();
+
 
     return (
-        <div>
-            <h2>Buscar Pelicula</h2>
-            <form onSubmit={handleSubmit}>
-                <TextField id="standard-basic"
-                    placeholder=' ej los simpson...'
-                    onChange={handleChange}
-                    value={search}
-                />
-            </form>
-            <>
-                <Typography variant='h5' gutterBottom align='center'>Resultados</Typography>
-                <Box display="flex"
-                    justifyContent='center'
-                    //border={1}
-                    flexWrap="wrap"
-                    p={2}
-                >
-                    {movies && movies.map((movie) => {
-                        return <Cards
+        <Div>
+            <CentrarEnColumna>
+                <Title>BUSCAR PELICULA</Title>
+                <form onSubmit={handleSubmit}  >
+                    <TextField id="standard-basic"
+                        InputLabelProps={{
+                            style: { color: 'white' },
+                        }}
+                        InputProps={{
+                            style:{color:'white'}
+                        }}
+
+                        label=' ej los simpsons...'
+                        onChange={handleChange}
+                        value={search}
+                        className={classes.TextField}
+                        color='secondary'
+                       
+
+
+                    />
+                </form>
+            </CentrarEnColumna>
+
+            {search && <Title>Resultados</Title>}
+
+            <CentrarElementos>
+
+                {movies?.map((movie) => (
+                    <Link to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                        <Cards
                             title={movie.title}
                             poster_path={movie.poster_path}
                             key={movie.id}
                             id={movie.id}
-                            handleClick={handleClick} />
-                    })}
-
-                </Box>
-            </>
-        </div>
+                        />
+                    </Link>
+                ))}
+            </CentrarElementos>
+        </Div>
     )
 }
 

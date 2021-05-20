@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { Carousel, Button } from 'react-bootstrap';
+import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
 
 const Carrusel = () => {
 
@@ -8,9 +10,10 @@ const Carrusel = () => {
 
   const BASE_URL = `https://api.themoviedb.org/3/movie/now_playing?`
   const apiKey = `api_key=6c78ff8e971663d6ee470502622fe044`
-  const lenguaje = `&languaje=es-ES`
+  const lenguaje = `&language=es-ES`
   const page = `&page=1`
   const fetchCarousel = BASE_URL + apiKey + lenguaje + page
+  const params = useParams() 
 
   useEffect(() => {
     fetch(fetchCarousel)
@@ -32,20 +35,18 @@ const Carrusel = () => {
     width: 70%;
     padding: 20px;`
 
-  // const Button = styled.button`
-
-  // `
-
-
   return (
+
     <Carousel>
+      
       {movies &&
         movies.map(movie => {
           const backdrop_path = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
           const id = `/movie/${movie.id}`
 
           return (
-            <Carousel.Item>
+            
+            <Carousel.Item key={movie.id}>
               <Img
                 className="d-block w-100 slider"
                 src={backdrop_path}
@@ -55,17 +56,17 @@ const Carrusel = () => {
                 <Div>
                   <h3>{movie.title}</h3>
                   <p>{movie.overview}</p>
-                  <a href={id}><Button variant="primary">Ver mas...</Button></a>
+                  <Link to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                    <Button variant="primary">Ver mas...</Button></Link>
                 </Div>
               </Carousel.Caption>
             </Carousel.Item>
+            
           );
         })}
     </Carousel>
-
+   
 
   )
-
-
-
+}
 export default Carrusel

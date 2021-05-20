@@ -1,51 +1,50 @@
-
 import React, { useState, useEffect } from 'react';
 import Cards from './Cards'
-//import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-//import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import { Link } from 'react-router-dom'
+
+import { useParams } from 'react-router-dom'
+import { Movie } from '@material-ui/icons';
+import useFetch from '../hooks/useFetch'
+import { URL_ULTIMOS_LANZAMIENTOS } from '../utils/variables'
+import { CentrarElementos , Title ,Div} from './Commons'
+import styled from 'styled-components'
 
 const UltimosLanzamientos = () => {
-    const [movies, setmovies] = useState([])
-    const [detalles, setDetalles] = useState(false)
 
+    const params = useParams()
+    const movies = useFetch(URL_ULTIMOS_LANZAMIENTOS)
 
-    useEffect(() => {
-        fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=6c78ff8e971663d6ee470502622fe044&languaje=es-ES&page=1')
-            .then(res => res.json())
-            .then(data =>//console.log(data.results))
-                setmovies(data.results))
-    }, [])
+    // const Div = styled.div`
+    // background-color:${props => props.theme.background.primary};
+    // `
 
-
-
-    const handleClick = id => console.log(` me hicienron click en la tarjeta con el id `, id);
-        
-    
     return (
-       // detalles &&
-        <>
-            <Typography variant='h5' gutterBottom align='center'>Ultimos lanzamientos</Typography>
-            <Box display="flex"
-                justifyContent='center'
-               // border={1}
-                flexWrap="wrap"
-                p={2}
-            >
-                {movies && movies.map((movie) => {
-                    return <Cards
-                        title={movie.title}
-                        poster_path={movie.poster_path}
-                        key={movie.id}
-                        id={movie.id}
-                        handleClick={handleClick} />
+        <Div >
+            <Title>ULTIMOS LANZAMIENTOS</Title>
+           
 
-                })}
-               
-                
-            </Box>
-        </>
+            
+            <CentrarElementos>
+                {movies && movies.map((movie) => (
+
+                    <Link to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                        <Cards
+                            title={movie.title}
+                            movie={movie}
+                            poster_path={movie.poster_path}
+
+
+                        />
+                    </Link>
+
+                ))}
+ </CentrarElementos>
+              
+            </Div>
+     
+
     )
 }
 

@@ -2,17 +2,26 @@ import Carrusel from './Carrusel'
 import PeliculasTendencia from './PeliculasTendencia'
 
 import styled from 'styled-components'
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../styles/theme'
+
+const Div = styled.div`
+//background-color: rgb(54, 57, 63);
+`
+
 
 const Home = () => {
 
-    const Div = styled.div`
-    background-color: rgb(54, 57, 63);`
     return (
+        <ThemeProvider theme={theme}>
         <Div>
+
             <Carrusel />
+
             <PeliculasTendencia />
-            <h1>En Home</h1>
+           
         </Div>
+        </ThemeProvider >
     )
 }
 
