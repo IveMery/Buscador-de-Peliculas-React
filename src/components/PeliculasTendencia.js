@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Cards from './Cards'
-// import Typography from '@material-ui/core/Typography';
-// import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom'
 import { resultadosHome } from '../utils/variables'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import styled from 'styled-components';
-import { CentrarElementos ,Title} from './Commons'
+import { CentrarElementos, Title , StyledLink} from './Commons'
 import PeliculasTendenciaDetalle from './PeliculasTendenciaDetalle'
 import useFetch from '../hooks/useFetch'
+
+const Div = styled.div`
+background-color:${props => props.theme.background.primary};
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-decoration:none;
+`
+const DivTitle = styled.div`
+background-color:${props => props.theme.background.primary};
+width:50%;
+display:flex;
+justify-content:center;
+margin-top:20px;
+`
 
 
 const PeliculasTendencia = () => {
@@ -21,48 +34,30 @@ const PeliculasTendencia = () => {
                 setmovies(resultadosHome(data.results)))
     }, [])
 
-    const Div = styled.div`
-    background-color:${props => props.theme.background.primary};
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    `
-    const DivTitle = styled.div`
-    background-color:${props => props.theme.background.primary};
-    width:50%;
-    display:flex;
-    justify-content:center;
-    margin-top:20px;
-    `
-
-    // const Title = styled.h5`
-    // font-family: ${props => props.theme.fonts.titulos};
-    // color:${props => props.theme.colors.textPrimary};
-    // `
-    return (
+  return (
         <Div>
-               <Link to='/PeliculasTendenciaDetalle'>
-            <DivTitle>
-                <Title>
-                    PELICULAS QUE SON TENDENCIA <ArrowForwardIcon />
-                </Title>
-            </DivTitle>
-            </Link>
+            <StyledLink to='/PeliculasTendenciaDetalle'>
+                <DivTitle>
+                    <Title>
+                        PELICULAS QUE SON TENDENCIA <ArrowForwardIcon />
+                    </Title>
+                </DivTitle>
+            </StyledLink>
             <CentrarElementos>
-                {movies && movies.map((movie) => (
-                     <Link to={`/DetallePelicula/${movie.id}`} key={movie.id}>
-                    <Cards
-                        title={movie.title}
-                        poster_path={movie.poster_path}
-                        key={movie.id}
-                        id={movie.id}
-                    />
-                   </Link>
+                {movies?.map(({ title, poster_path, id }) => (
+                    <StyledLink to={`/DetallePelicula/${id}`} key={id}>
+                        <Cards
+                            title={title}
+                            poster_path={poster_path}
+                            key={id}
+                            id={id}
+                        />
+                    </StyledLink>
                 ))}
-                
+
             </CentrarElementos>
         </Div>
-         )
+    )
 }
 
 

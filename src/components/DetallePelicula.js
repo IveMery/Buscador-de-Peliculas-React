@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import InfoMovie from './InfoMovie'
+// import InfoMovie from './InfoMovie'
 
 import styled from 'styled-components'
 

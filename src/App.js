@@ -3,7 +3,7 @@ import './App.css';
 import { AppBar, Toolbar } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles'
 
-
+import styled from 'styled-components';
 
 
 
@@ -16,17 +16,23 @@ import DetallePelicula from "./components/DetallePelicula"
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from './styles/theme'
 import PeliculasTendenciaDetalle from "./components/PeliculasTendenciaDetalle";
-
+import {StyledLink} from './components/Commons'
 const GlobalStyle = createGlobalStyle`
 *{
   box-sizing:border-box;
   margin:0;
 }
+
+
+
 `
 const useStyle = makeStyles({
   navitem: {
     color: "white",
     marginRight: "20px",
+    fontFamily:'Bebas Neue',
+    fontSize:'25px'
+   
 
 
   },
@@ -38,6 +44,8 @@ const useStyle = makeStyles({
   }
 })
 
+
+
 const App = () => {
   const classes = useStyle()
   return (
@@ -47,10 +55,10 @@ const App = () => {
         <Router>
           <AppBar className={classes.navbar}>
             <Toolbar>
-              <Link to='/' className={classes.navitem} >Inicio</Link>
-              <Link to='/UltimosLanzamientos' className={classes.navitem}>Ultimos Lanzamientos</Link>
-              <Link to='/Populares' className={classes.navitem}>Populares</Link>
-              <Link to='/Buscar' className={classes.navitem}>Buscar</Link>
+              <StyledLink to='/' className={classes.navitem} >Inicio</StyledLink>
+              <StyledLink to='/UltimosLanzamientos' className={classes.navitem}>Ultimos Lanzamientos</StyledLink>
+              <StyledLink to='/Populares' className={classes.navitem}>Populares</StyledLink>
+              <StyledLink to='/Buscar' className={classes.navitem}>Buscar</StyledLink>
             </Toolbar>
           </AppBar>
 

@@ -3,8 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Cards from './Cards'
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
-import { CentrarElementos, CentrarEnColumna, Title, Div } from './Commons'
+import { CentrarElementos, CentrarEnColumna, Title, Div ,StyledLink} from './Commons'
 import { Link } from 'react-router-dom'
+
+const DivSearch = styled(Div)`
+height:1000vh;
+
+`
 
 const Search = () => {
 
@@ -38,18 +43,14 @@ const Search = () => {
 
             width: 500,
             marginTop: 30,
-
-
-
-
-        },
+},
 
     })
     const classes = useStyles();
 
 
     return (
-        <Div>
+        <DivSearch >
             <CentrarEnColumna>
                 <Title>BUSCAR PELICULA</Title>
                 <form onSubmit={handleSubmit}  >
@@ -78,17 +79,17 @@ const Search = () => {
             <CentrarElementos>
 
                 {movies?.map((movie) => (
-                    <Link to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                    <StyledLink to={`/DetallePelicula/${movie.id}`} key={movie.id}>
                         <Cards
                             title={movie.title}
                             poster_path={movie.poster_path}
                             key={movie.id}
                             id={movie.id}
                         />
-                    </Link>
+                    </StyledLink>
                 ))}
             </CentrarElementos>
-        </Div>
+        </DivSearch>
     )
 }
 
