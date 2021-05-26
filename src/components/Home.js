@@ -1,5 +1,6 @@
-import Carrusel from './Carrusel'
-import PeliculasTendencia from './PeliculasTendencia'
+import Carousel from '../views/Carousel'
+import Trending from '../views/Trending'
+import TopRated from '../views/TopRated'
 
 import styled from 'styled-components'
 import { ThemeProvider } from 'styled-components';
@@ -16,9 +17,10 @@ const Home = () => {
         <ThemeProvider theme={theme}>
         <Div>
 
-            <Carrusel />
+            <Carousel />
 
-            <PeliculasTendencia />
+            <Trending />
+            <TopRated/>
            
         </Div>
         </ThemeProvider >

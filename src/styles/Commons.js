@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
-export const CentrarElementos = styled.div`
+export const FlexCenter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@ background-color:${props => props.theme.primary};`
 export const Div = styled.div`
     background-color:${props => props.theme.background.primary};
 `
-export const CentrarEnColumna = styled.div`
+export const FlexColumn = styled.div`
 
   display: flex;
   align-items: center;
@@ -22,10 +22,7 @@ export const CentrarEnColumna = styled.div`
   flex-direction:column;
   padding:2px;
 `
-
-
-
-export  const Title = styled.h5`
+export const Title = styled.h5`
 font-family: ${props => props.theme.fonts.titulos};
 color:${props => props.theme.colors.textPrimary};
 text-align:center;
@@ -38,6 +35,7 @@ export const StyledLink = styled(Link)`
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
     }
+    cursor: pointer;
 `
 
 

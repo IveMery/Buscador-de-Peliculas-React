@@ -1,26 +1,23 @@
 // import React, { useState, useEffect } from 'react';
-import Cards from './Cards'
-
-import { Link } from 'react-router-dom'
-
+import Cards from '../components/Cards'
 import { useParams } from 'react-router-dom'
 // import { Movie } from '@material-ui/icons';
 import useFetch from '../hooks/useFetch'
-import { URL_ULTIMOS_LANZAMIENTOS } from '../utils/variables'
-import { CentrarElementos, Title, Div ,StyledLink} from './Commons'
+import { URL_NOW_PLAYING } from '../utils/variables'
+import { FlexCenter, Title, Div ,StyledLink} from '../styles/Commons'
 // import styled from 'styled-components'
 
-const UltimosLanzamientos = () => {
+const NowPlaying = () => {
 
     const params = useParams()
-    const movies = useFetch(URL_ULTIMOS_LANZAMIENTOS)
+    const movies = useFetch(URL_NOW_PLAYING)
 
     return (
         <Div >
             <Title>ULTIMOS LANZAMIENTOS</Title>
-            <CentrarElementos>
+            <FlexCenter>
                 {movies?.map((movie) => (
-                    <StyledLink to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                    <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
                         <Cards
                             title={movie.title}
                             movie={movie}
@@ -28,9 +25,9 @@ const UltimosLanzamientos = () => {
                         />
                     </StyledLink>
                 ))}
-            </CentrarElementos>
+            </FlexCenter>
         </Div>
     )
 }
 
-export default UltimosLanzamientos
+export default NowPlaying

@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom'
 import { Carousel, Button } from 'react-bootstrap';
 import styled from 'styled-components'
@@ -11,6 +11,7 @@ height: 450px;
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center top;
+
 `
 const Div = styled.div`
 background-color: #a7a7a7cf;
@@ -41,7 +42,7 @@ const Carrusel = () => {
               <Div>
                 <h3>{movie.title}</h3>
                 <p>{movie.overview}</p>
-                <Link to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                <Link to={`/MovieDetails/${movie.id}`} key={movie.id}>
                   <Button variant="primary">Ver mas...</Button></Link>
               </Div>
             </Carousel.Caption>

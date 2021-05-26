@@ -1,11 +1,11 @@
 import TextField from '@material-ui/core/TextField';
 import React, { useState, useEffect } from 'react';
-import Cards from './Cards'
+import Cards from '../components/Cards'
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
-import { CentrarElementos, CentrarEnColumna, Title, Div ,StyledLink} from './Commons'
-import { Link } from 'react-router-dom'
-
+import { FlexCenter, FlexColumn, Title, Div ,StyledLink} from '../styles/Commons'
+// import { Link } from 'react-router-dom'
+// import Loading  from './Loading'
 const DivSearch = styled(Div)`
 height:1000vh;
 
@@ -51,7 +51,8 @@ const Search = () => {
 
     return (
         <DivSearch >
-            <CentrarEnColumna>
+            
+            <FlexColumn>
                 <Title>BUSCAR PELICULA</Title>
                 <form onSubmit={handleSubmit}  >
                     <TextField id="standard-basic"
@@ -72,14 +73,16 @@ const Search = () => {
 
                     />
                 </form>
-            </CentrarEnColumna>
+            </FlexColumn>
 
             {search && <Title>Resultados</Title>}
 
-            <CentrarElementos>
+            <FlexCenter>
 
                 {movies?.map((movie) => (
-                    <StyledLink to={`/DetallePelicula/${movie.id}`} key={movie.id}>
+                    
+                    <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
+                   
                         <Cards
                             title={movie.title}
                             poster_path={movie.poster_path}
@@ -88,7 +91,8 @@ const Search = () => {
                         />
                     </StyledLink>
                 ))}
-            </CentrarElementos>
+            </FlexCenter>
+           
         </DivSearch>
     )
 }

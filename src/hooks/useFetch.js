@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react'
 
 const useFetch = (url) => {
-  const [peliculas, setPeliculas] = useState([])
+  const [movie, setMovie] = useState([])
 
   useEffect(() => {
       try{
         fetch(url)
         .then(res => res.json())
         // data.results 
-        .then(data => setPeliculas(data.results))
+        .then(data => setMovie(data.results))
       }
       catch(err){
           console.log(err);
@@ -18,7 +18,7 @@ const useFetch = (url) => {
   }, [])
 
 
-  return peliculas
+  return movie
 }
 
 export default useFetch

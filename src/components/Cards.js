@@ -9,43 +9,43 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 
-
-const Cards = ({ title, poster_path, handleClick, id ,movie}) => {
-
-// console.log(movie);
+const Cards = ({ title, poster_path, }) => {
 
   const useStyles = makeStyles({
     root: {
-     // maxWidth: 200,
       margin: 10,
-      width: 230
-
+      width: 230,
+      color:'white',
+      background:'rgb(54, 57, 63)',
+     //fontFamily:'Varela Round',
 
     },
     media: {
       height: 340,
-     
+      overflow: 'hidden',
+      transition: 'all 0.2s ease-in',
+      '&:hover': {
+        transform: ' scale(1.1) ',
+
+      },
+
     },
-    title:{
+
+
+    title: {
       fontSize: 14,
-      overflow:'hidden',
-      textAlign:'center',
+      overflow: 'hidden',
+      textAlign: 'center',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
-      
     },
-    boton:{
-     justifyContent:'center',
-     
+    boton: {
+      justifyContent: 'center',
     }
   })
 
   const classes = useStyles();
-
   poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`
-
-  // const handleClickDetalles = () => handleClick(id)
-
   return (
     <>
       <Card className={classes.root} >
@@ -54,19 +54,18 @@ const Cards = ({ title, poster_path, handleClick, id ,movie}) => {
             className={classes.media}
             image={poster_path}
             title={title}
-           
           />
           <CardContent>
-            <Typography gutterBottom variant="h6" component="h2" className={classes.title}  overflow='hidden'>
+            <Typography gutterBottom variant="h6" component="h2" className={classes.title} overflow='hidden'>
               {title}
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions  className={classes.boton}>
+        {/* <CardActions className={classes.boton}>
           <Button size="small" color="inherit" >
             <VisibilityOutlinedIcon />
           </Button>
-        </CardActions>
+        </CardActions> */}
       </Card>
     </>
   );
