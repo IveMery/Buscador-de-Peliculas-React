@@ -10,8 +10,7 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from './styles/theme'
 import TrendingDetails from "./views/TrendingDetails";
 import TopRatedDetails from "./views/TopRatedDetails";
-
-import Nav from "./views/Nav";
+import ContainerNav from "./components/ContainerNav";
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -20,13 +19,12 @@ const GlobalStyle = createGlobalStyle`
 }
 `
 const App = () => {
-
   return (
-    <div>
+    <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Router>
-          <Nav />
+          <ContainerNav />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/NowPlaying' component={NowPlaying} />
@@ -35,15 +33,11 @@ const App = () => {
             <Route exact path='/TrendingDetails' component={TrendingDetails} />
             <Route exact path='/TopRatedDetails' component={TopRatedDetails} />
             <Route exact path='/MovieDetails/:id' component={MovieDetails} />
-
             <Route path='*' component={Error404} />
           </Switch>
         </Router>
       </ThemeProvider>
-
-
-    </div>
-
+    </>
   );
 }
 
