@@ -34,8 +34,10 @@ export const StyledLink = styled(Link)`
 
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
+        color:white;
     }
     cursor: pointer;
+    color:white;
 `
 
 
