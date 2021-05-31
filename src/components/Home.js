@@ -22,6 +22,7 @@ const Home = () => {
             <Trending />
             <TopRated/>
            
+           
         </Div>
         </ThemeProvider >
     )

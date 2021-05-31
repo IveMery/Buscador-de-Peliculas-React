@@ -16,13 +16,16 @@ const GlobalStyle = createGlobalStyle`
 *{
   box-sizing:border-box;
   margin:0;
+ 
 }
 `
+// ${props => props.theme.fontSizes.xs}
 const App = () => {
   return (
     <>
-      <GlobalStyle />
+     
       <ThemeProvider theme={theme}>
+      <GlobalStyle />
         <Router>
           <ContainerNav />
           <Switch>

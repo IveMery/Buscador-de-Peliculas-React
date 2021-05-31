@@ -5,18 +5,20 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import { URL_NOW_PLAYING } from '../utils/variables'
 import { FlexCenter, Title, Div ,StyledLink} from '../styles/Commons'
+import Loading from '../components/Loading'
 // import styled from 'styled-components'
 
 const NowPlaying = () => {
 
     const params = useParams()
+   
     const movies = useFetch(URL_NOW_PLAYING)
 
     return (
         <Div >
             <Title>ULTIMOS LANZAMIENTOS</Title>
             <FlexCenter>
-                {movies?.map((movie) => (
+                {movies ? movies.map((movie) => (
                     <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
                         <Cards
                             title={movie.title}
@@ -24,7 +26,7 @@ const NowPlaying = () => {
                             poster_path={movie.poster_path}
                         />
                     </StyledLink>
-                ))}
+                )) : <Loading/>}
             </FlexCenter>
         </Div>
     )

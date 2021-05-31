@@ -28,14 +28,14 @@ const Carrusel = () => {
 
     <Carousel>
       {movies?.map(movie => {
-        const backdrop_path = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
+        //const backdrop_path = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
 
         return (
 
           <Carousel.Item key={movie.id}>
             <Img
               className="d-block w-100 slider"
-              src={backdrop_path}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               alt={movie.title}
             />
             <Carousel.Caption>

@@ -1,27 +1,27 @@
 import React from 'react'
-import { WindMillLoading } from 'react-loadingg';
+import './Loading.css';
 import styled from 'styled-components';
 
 export const Div = styled.div`
-    background-color:rgba(219, 206, 206, 0.6);
+    background-color:#ece8e842;;
     height:100%;
     width:100%;
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     z-index:10;
 `
 const Loading = () => {
+  return (
 
+    <Div>
+      <div class="loadingio-spinner-bean-eater-uqao2wsak3"><div class="ldio-r6tsle4qd9p">
+        <div><div></div><div></div><div></div></div><div><div></div><div></div><div></div></div>
+      </div></div>
 
-    
-    return (
-
-        <Div>
-            < WindMillLoading />
-        </Div>
-
-
-
-
-    )
+    </Div>
+  )
 }
 
 export default Loading
