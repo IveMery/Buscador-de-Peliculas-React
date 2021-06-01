@@ -1,11 +1,15 @@
+import React, { useState } from 'react';
 import Cards from '../components/Cards'
 import useFetch from '../hooks/useFetch'
-import { URL_POPULARES } from '../utils/variables'
+import { URL_POPULAR } from '../utils/variables'
 import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
+import CustomPagination from '../components/CustomPagination';
 
 const Populares = () => {
+    
+    const [pages, setPages] = useState(1)
+    const [movies, numOfPages] = useFetch(URL_POPULAR + `${pages}`)
 
-    const movies = useFetch(URL_POPULARES)
     return (
         <Div>
             <Title>POPULARES</Title>
@@ -21,6 +25,7 @@ const Populares = () => {
                     </StyledLink>
                 ))}
             </FlexCenter>
+            {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
         </Div>
     )
 }

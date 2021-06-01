@@ -1,17 +1,21 @@
+import { useState } from 'react'
 import Cards from '../components/Cards'
 import useFetch from '../hooks/useFetch'
-import { URL_TRENDING } from '../utils/variables'
+import { URL_TRENDING_DETAILS } from '../utils/variables'
 import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
+import CustomPagination from '../components/CustomPagination';
 
 
 const TrendingDetails = () => {
+    
+    const [pages, setPages] = useState(1)
+    const [movie ,numOfPages] = useFetch( URL_TRENDING_DETAILS + `${pages}`)
 
-    const movies = useFetch( URL_TRENDING)
     return (
         <Div>
         <Title>TENDENCIA</Title>
         <FlexCenter>
-            {movies?.map((movie) => (
+            {movie?.map((movie) => (
                 <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
                     <Cards
                         title={movie.title}
@@ -22,6 +26,7 @@ const TrendingDetails = () => {
                 </StyledLink>
             ))}
         </FlexCenter>
+        { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
     </Div>
     )
 }

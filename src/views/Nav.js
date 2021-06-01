@@ -12,7 +12,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
     height:60px;
     align-items:center;
 
-    @media screen and (max-width:900px){
+    @media ${props => props.theme.breakpoints.large}{
         width:100%;
         height:100vh;
         position:absolute;
@@ -38,7 +38,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
         height:40px;
     }
     
-    @media screen and (max-width:900px){
+    @media ${props => props.theme.breakpoints.large}{
         padding-top:10px;
         margin-bottom:30px;
     }`
@@ -54,7 +54,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
     outline:none;
     }
 
-    @media screen and (max-width:900px){
+    @media ${props => props.theme.breakpoints.large}{
     display:flex;
     color:#ebc08b;
     font-size:2rem;
@@ -66,7 +66,6 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
     const openMenu = () => {
         setClick(!click)
-        console.log(click);
     }
 
     return (

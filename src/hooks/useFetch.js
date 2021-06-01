@@ -1,24 +1,20 @@
-  
 import { useState, useEffect } from 'react'
 
 const useFetch = (url) => {
-  const [movie, setMovie] = useState([])
+  const [movies, setMovie] = useState([])
+  const [numOfPages, setNumOfPages] = useState();
 
   useEffect(() => {
-      try{
-        fetch(url)
-        .then(res => res.json())
-        // data.results 
-        .then(data => setMovie(data.results))
-      }
-      catch(err){
-          console.log(err);
-      }
-
-  }, [])
-
-
-  return movie
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setMovie(data.results)
+        window.scroll(0, 0)
+        console.log(data.results);
+        setNumOfPages(data.total_pages)
+      })
+  }, [url, numOfPages])
+  return [movies, numOfPages]
 }
 
 export default useFetch

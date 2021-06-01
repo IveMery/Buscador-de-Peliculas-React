@@ -26,6 +26,7 @@ export const theme = {
 
     }, 
     breakpoints:{
+        large:'screen and (max-width:900px)',
         medium:'(max-width:650px)',
         small: '(min-width:320px) and  (max-width:360px)'
     }
