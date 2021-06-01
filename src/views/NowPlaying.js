@@ -1,24 +1,24 @@
-// import React, { useState, useEffect } from 'react';
+import { useState } from 'react'
 import Cards from '../components/Cards'
 import { useParams } from 'react-router-dom'
-// import { Movie } from '@material-ui/icons';
 import useFetch from '../hooks/useFetch'
 import { URL_NOW_PLAYING } from '../utils/variables'
-import { FlexCenter, Title, Div ,StyledLink} from '../styles/Commons'
+import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
 import Loading from '../components/Loading'
-// import styled from 'styled-components'
+import CustomPagination from '../components/CustomPagination';
+
 
 const NowPlaying = () => {
 
     const params = useParams()
-   
-    const movies = useFetch(URL_NOW_PLAYING)
+    const [pages, setPages] = useState(1)
 
+    const [movie, numOfPages] = useFetch(URL_NOW_PLAYING + `${pages}`)
     return (
         <Div >
             <Title>ULTIMOS LANZAMIENTOS</Title>
             <FlexCenter>
-                {movies ? movies.map((movie) => (
+                {movie ? movie.map((movie) => (
                     <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
                         <Cards
                             title={movie.title}
@@ -26,8 +26,9 @@ const NowPlaying = () => {
                             poster_path={movie.poster_path}
                         />
                     </StyledLink>
-                )) : <Loading/>}
+                )) : <Loading />}
             </FlexCenter>
+            { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
         </Div>
     )
 }

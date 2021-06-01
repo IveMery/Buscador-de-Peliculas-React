@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/theme'
 
 const Div = styled.div`
-//background-color: rgb(54, 57, 63);
+
 `
 
 

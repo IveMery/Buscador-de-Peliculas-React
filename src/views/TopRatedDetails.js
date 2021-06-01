@@ -1,16 +1,20 @@
+import { useState } from 'react'
 import Cards from '../components/Cards'
 import useFetch from '../hooks/useFetch'
-import {URL_TOPRATED } from '../utils/variables'
+import {URL_TOPRATED_DETAILS } from '../utils/variables'
 import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
+import CustomPagination from '../components/CustomPagination';
 
 const TopRatedDetails = () => {
-
-    const movies = useFetch(URL_TOPRATED)
+    const [pages, setPages] = useState(1)
+    const [movie ,numOfPages] = useFetch(URL_TOPRATED_DETAILS + `${pages}`)
+  
     return (
+
         <Div>
         <Title>MEJOR PUNTUADAS</Title>
         <FlexCenter>
-            {movies?.map((movie) => (
+            {movie?.map((movie) => (
                 <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
                     <Cards
                         title={movie.title}
@@ -21,6 +25,7 @@ const TopRatedDetails = () => {
                 </StyledLink>
             ))}
         </FlexCenter>
+        {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
     </Div>
     )
 }

@@ -10,9 +10,8 @@ const Img = styled.img`
 height: 450px;
 background-size: cover;
 background-repeat: no-repeat;
-background-position: center top;
+background-position: center top;`
 
-`
 const Div = styled.div`
 background-color: #a7a7a7cf;
 margin: 0 auto;
@@ -22,16 +21,12 @@ padding: 20px;`
 
 const Carrusel = () => {
 
-  const movies = useFetch(URL_CARRUSEL)
+  const [movies] = useFetch(URL_CARRUSEL)
 
   return (
-
     <Carousel>
       {movies?.map(movie => {
-        //const backdrop_path = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
-
         return (
-
           <Carousel.Item key={movie.id}>
             <Img
               className="d-block w-100 slider"
@@ -47,12 +42,9 @@ const Carrusel = () => {
               </Div>
             </Carousel.Caption>
           </Carousel.Item>
-
         );
       })}
     </Carousel>
-
-
   )
 }
 export default Carrusel

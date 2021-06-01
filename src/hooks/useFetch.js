@@ -1,32 +1,20 @@
 import { useState, useEffect } from 'react'
-import Loading from '../components/Loading'
 
 const useFetch = (url) => {
-  const [movie, setMovie] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [movies, setMovie] = useState([])
+  const [numOfPages, setNumOfPages] = useState();
 
   useEffect(() => {
-    
-   
-    try {
-      fetch(url)
-        .then(res => res.json())
-        // data.results 
-        .then(data => {
-          setMovie(data.results)
-          console.log(data.results);
-        }
-        )
-    }
-    catch (err) {
-      console.log(err);
-      // setLoading(false)
-    }
-
-  }, [url])
-
-
-  return  movie 
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setMovie(data.results)
+        window.scroll(0, 0)
+        console.log(data.results);
+        setNumOfPages(data.total_pages)
+      })
+  }, [url, numOfPages])
+  return [movies, numOfPages]
 }
 
 export default useFetch
