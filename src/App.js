@@ -22,7 +22,7 @@ body{
   background-color:${props => props.theme.background.primary};
 }
 `
-// ${props => props.theme.fontSizes.xs}
+
 const App = () => {
   return (
     <>
