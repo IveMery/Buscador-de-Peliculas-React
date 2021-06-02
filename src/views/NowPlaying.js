@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Cards from '../components/Cards'
-import { useParams } from 'react-router-dom'
+//import { useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import { URL_NOW_PLAYING } from '../utils/variables'
 import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
@@ -10,7 +10,7 @@ import CustomPagination from '../components/CustomPagination';
 
 const NowPlaying = () => {
 
-    const params = useParams()
+   // const params = useParams()
     const [pages, setPages] = useState(1)
 
     const [movie, numOfPages] = useFetch(URL_NOW_PLAYING + `${pages}`)

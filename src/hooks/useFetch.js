@@ -8,7 +8,7 @@ const useFetch = (url) => {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        setMovie(data.results)
+        setMovie(data.results || data)
         window.scroll(0, 0)
         console.log(data.results);
         setNumOfPages(data.total_pages)

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
+import zIndex from '@material-ui/core/styles/zIndex';
 
 export const FlexCenter = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ export const FlexColumn = styled.div`
   flex-direction:column;
   padding:2px;
 `
+
 export const Title = styled.h5`
 font-family: ${props => props.theme.fonts.titulos};
 color:${props => props.theme.colors.textPrimary};
