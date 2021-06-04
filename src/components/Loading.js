@@ -16,7 +16,7 @@ const Loading = () => {
   return (
 
     <Div>
-      <div class="loadingio-spinner-bean-eater-uqao2wsak3"><div class="ldio-r6tsle4qd9p">
+      <div className="loadingio-spinner-bean-eater-uqao2wsak3"><div className="ldio-r6tsle4qd9p">
         <div><div></div><div></div><div></div></div><div><div></div><div></div><div></div></div>
       </div></div>
 

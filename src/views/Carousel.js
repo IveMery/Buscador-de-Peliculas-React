@@ -20,7 +20,7 @@ padding: 20px;`
 
 const Carrusel = () => {
 
-  const [movies] = useFetch(URL_CARRUSEL)
+  const [movies ] = useFetch(URL_CARRUSEL)
 
   return (
     <Carousel>

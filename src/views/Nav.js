@@ -25,17 +25,20 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
     const NavItem = styled.li`
      
-    margin-right: 10px;
+    /* margin-right: 10px; */
     font-family: Bebas Neue;
     font-size: 20px; 
     list-style:none;
+    padding:10px;
 
     &:hover{
         background-color: rgb(35, 39, 60);
         border-bottom:0.2rem solid #f50057;
         transition: 0.3s ease-in;
         border-radius:1px;
-        height:40px;
+        height:45px;
+        //padding:10px;
+        border-radius:5px;
     }
     
     @media ${props => props.theme.breakpoints.large}{

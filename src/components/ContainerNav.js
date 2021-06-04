@@ -11,7 +11,8 @@ position:sticky;
 top:0;
 z-index:99;
 position: 'sticky';
-    background-color: rgb(35, 39, 42);
+background-color: rgb(35, 39, 42);
+
 `
 
 

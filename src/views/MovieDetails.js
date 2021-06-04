@@ -10,12 +10,16 @@ import useFetch from '../hooks/useFetch'
 const DivContainer = styled.div`
 display:flex;
 justify-content:center;
-padding-top:30px;
+//padding-top:30px;
+padding-top:0;
 flex-wrap:wrap;
 height:auto;
 padding:0;
 margin:0;
 flex:1 1 auto;
+padding-top: 40px;
+background-color:rgba(54, 53, 53, 0.664);
+height:100%;
 
 @media (max-width:650px){ 
     flex-direction: column;
@@ -52,6 +56,7 @@ const DivInfo = styled.div`
  margin-left:30px;
  padding:20px;
  height:300px;
+ 
 
 @media ${props => props.theme.breakpoints.medium}{
   font-size:${props => props.theme.fontSizes.s};
@@ -96,16 +101,12 @@ const Subtitulo = styled.h3`
     font-size:8px;
  }
  `
-const OpenVideo = styled.p`
-font-size:${props => props.theme.fontSizes.m};
-font-weight:700;
-`
 
 const MovieDetails = () => {
 
-    const [isOpen, setOpen] = useState(false)
-    const params = useParams()
 
+    const params = useParams()
+    const [isOpen, setOpen] = useState(false)
     const [movies] = useFetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=6c78ff8e971663d6ee470502622fe044&language=es-ES&page=1`)
     const [video] = useFetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=c7e318bc4679faa16a6f940e1435e019&languaje=es-ES`)
 
@@ -120,8 +121,9 @@ const MovieDetails = () => {
     color:white;
     display:flex;
     justify-content:center;
-    padding-top:40px;
+    //padding-top:40px;
     zoom: 1;
+    
     `
 
     return (
@@ -135,7 +137,8 @@ const MovieDetails = () => {
                 />}
             <DivContainer>
                 <DivImgContainer>
-                    <Img src={`https://image.tmdb.org/t/p/original/${movies.poster_path}`} />
+                    <Img src={movies.poster_path ? `https://image.tmdb.org/t/p/original/${movies.poster_path}` : "https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg"}
+                        alt={movies.title} />
                 </DivImgContainer>
                 < DivInfo>
                     <DivTitle>
@@ -143,6 +146,7 @@ const MovieDetails = () => {
                         {video.length > 0 ? <Button
                             variant="contained"
                             color="primary"
+                            size="small"
                             onClick={() => setOpen(true)}>
                             <PlayCircleFilledRoundedIcon />
                                 Ver Trailer
@@ -150,6 +154,8 @@ const MovieDetails = () => {
                             : <Button
                                 variant="contained"
                                 color="secondary"
+                                size="small"
+                                
                                 onClick={() => setOpen(true)}>
                                 <PlayCircleFilledRoundedIcon />
                                 Trailer no diponible
@@ -160,7 +166,6 @@ const MovieDetails = () => {
                     <Subtitulo>Generos</Subtitulo>
                     <ul>
                         {movies.genres?.map(genre => {
-                            console.log(genre);
                             return (<li key={genre.id}>{genre.name}</li>)
                         })}
                     </ul>

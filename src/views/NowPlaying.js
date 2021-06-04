@@ -13,22 +13,29 @@ const NowPlaying = () => {
    // const params = useParams()
     const [pages, setPages] = useState(1)
 
-    const [movie, numOfPages] = useFetch(URL_NOW_PLAYING + `${pages}`)
+    const [ movie, numOfPages,  loading] = useFetch(URL_NOW_PLAYING + `${pages}`)
     return (
         <Div >
-            <Title>ULTIMOS LANZAMIENTOS</Title>
-            <FlexCenter>
-                {movie ? movie.map((movie) => (
-                    <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
-                        <Cards
-                            title={movie.title}
-                            movie={movie}
-                            poster_path={movie.poster_path}
-                        />
-                    </StyledLink>
-                )) : <Loading />}
-            </FlexCenter>
-            { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
+            {
+                loading ? <Loading/> :
+                <>
+                <Title>ULTIMOS LANZAMIENTOS</Title>
+                <FlexCenter>
+                    {movie ? movie.map((movie) => (
+                        <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
+                            <Cards
+                                title={movie.title}
+                                movie={movie}
+                                poster_path={movie.poster_path}
+                            />
+                        </StyledLink>
+                    )) : <Loading />}
+                </FlexCenter>
+                { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
+                
+                </>
+            }
+           
         </Div>
     )
 }

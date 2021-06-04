@@ -41,7 +41,6 @@ const Search = () => {
 
     return (
         <Div>
-            {/* <Loading/> */}
             <FlexColumn>
                 <Title>BUSCAR PELICULA</Title>
                 <form onSubmit={handleSubmit}  >

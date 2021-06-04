@@ -17,6 +17,7 @@ const Cards = ({ title, poster_path, }) => {
       width: 230,
       color:'white',
       background:'rgb(54, 57, 63)',
+      border:'none',
      //fontFamily:'Varela Round',
 
     },
@@ -39,7 +40,7 @@ const Cards = ({ title, poster_path, }) => {
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
     },
-    boton: {
+    buttton: {
       justifyContent: 'center',
     }
   })
@@ -48,11 +49,11 @@ const Cards = ({ title, poster_path, }) => {
  // poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`
   return (
     <>
-      <Card className={classes.root} >
+      <Card className={classes.root} variant="outlined" >
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={ `https://image.tmdb.org/t/p/original/${poster_path}`}
+            image={ poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : "https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg"}
             title={title}
           />
           <CardContent>
@@ -61,7 +62,7 @@ const Cards = ({ title, poster_path, }) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        {/* <CardActions className={classes.boton}>
+        {/* <CardActions className={classes.buttton}>
           <Button size="small" color="inherit" >
             <VisibilityOutlinedIcon />
           </Button>
