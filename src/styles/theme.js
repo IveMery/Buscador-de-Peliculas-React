@@ -16,12 +16,15 @@ export const theme = {
         margin: '0 0 20px 0',
         paddingTop:'20px'
     },
+    marginTitlesResponsive:{
+        marginLeft:'30px',
+    },
     fontSizes:{
         xl:'25px',
         l:'20px',
         m:'15px',
         s:'10px',
-        xs:'5px',
+        xs:'7px',
         
 
     }, 

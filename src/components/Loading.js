@@ -12,8 +12,7 @@ export const Div = styled.div`
     align-items:center;
     z-index:10;
 `
-const Loading = () => {
-  return (
+const Loading = () => {  return (
 
     <Div>
       <div className="loadingio-spinner-bean-eater-uqao2wsak3"><div className="ldio-r6tsle4qd9p">

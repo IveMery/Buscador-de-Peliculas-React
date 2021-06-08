@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import zIndex from '@material-ui/core/styles/zIndex';
+
 
 export const FlexCenter = styled.div`
   display: flex;

@@ -3,7 +3,6 @@ import Cards from '../components/Cards'
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { FlexCenter, FlexColumn, Title, Div, StyledLink } from '../styles/Commons'
-import Loading from '../components/Loading'
 import CustomPagination from '../components/CustomPagination';
 
 const Search = () => {
@@ -35,6 +34,13 @@ const Search = () => {
         TextField: {
             width: 500,
             marginTop: 30,
+
+            '@media (max-width:600px)': {
+                width: 300,
+            },
+            '@media (max-width:350px)': {
+                width: 200,
+            }
         },
     })
     const classes = useStyles();
@@ -62,16 +68,18 @@ const Search = () => {
             </FlexColumn>
             {search && <Title>Resultados</Title>}
             <FlexCenter>
-                {movies ? movies.map((movie) => (
-                    <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
-                        <Cards
-                            title={movie.title}
-                            poster_path={movie.poster_path}
-                            key={movie.id}
-                            id={movie.id}
-                        />
-                    </StyledLink>
-                )) : <Loading />}
+                {
+                    movies.map((movie) => (
+                        <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
+                            <Cards
+                                title={movie.title}
+                                poster_path={movie.poster_path}
+                                key={movie.id}
+                                id={movie.id}
+                            />
+                        </StyledLink>
+                    ))
+                }
             </FlexCenter>
             {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
         </Div>

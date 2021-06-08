@@ -18,6 +18,15 @@ width:50%;
 display:flex;
 justify-content:center;
 margin-top:20px;
+
+@media ${props => props.theme.breakpoints.medium}{ 
+    margin-left:${props => props.theme.marginTitlesResponsive.marginLeft} 
+        
+ 
+ }
+ @media ${props => props.theme.breakpoints.small}{ 
+    margin-left:${props => props.theme.marginTitlesResponsive.marginLeft} 
+ }
 `
 const Trending = () => {
     const [movies, setmovies] = useState([])

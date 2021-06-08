@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import PlayCircleFilledRoundedIcon from '@material-ui/icons/PlayCircleFilledRounded';
@@ -6,6 +7,16 @@ import Button from '@material-ui/core/Button';
 import ModalVideo from "react-modal-video"
 import '../styles/modal.css'
 import useFetch from '../hooks/useFetch'
+
+
+const theme = createMuiTheme({
+    typography: {
+        fontSize: 13,
+      
+    },
+  
+  })
+
 
 const DivContainer = styled.div`
 display:flex;
@@ -42,7 +53,7 @@ const DivImgContainer = styled.div`
 } 
 
 @media ${props => props.theme.breakpoints.small}{ 
-  width:120px;
+  width:180px;
   height:auto;
   margin-left:15px;
 }`
@@ -59,14 +70,14 @@ const DivInfo = styled.div`
  
 
 @media ${props => props.theme.breakpoints.medium}{
-  font-size:${props => props.theme.fontSizes.s};
+  font-size:${props => props.theme.fontSizes.m};
   width:200px;
   overflow:scroll
 }
 
 @media ${props => props.theme.breakpoints.small}{ 
-  font-size:${props => props.theme.fontSizes.xs};
-  width:150px;
+  font-size:${props => props.theme.fontSizes.m};
+  width:200px;
 }`
 
 const DivTitle = styled.div`
@@ -74,20 +85,23 @@ const DivTitle = styled.div`
   justify-content:space-between;
   margin-bottom:20px;
   font-size:10px;
+ 
 
 @media ${props => props.theme.breakpoints.medium}{ 
+    padding:0;
 } 
 
 @media ${props => props.theme.breakpoints.small}{ 
-    font-size:${props => props.theme.fontSizes.xs};}`
+    font-size:${props => props.theme.fontSizes.m};}`
 
 const Title = styled.h2`
 font-size:25px;
 @media ${props => props.theme.breakpoints.medium}{ 
  font-size:${props => props.theme.fontSizes.m};}
+ margin-right:5px;
 
  @media ${props => props.theme.breakpoints.small}{
-    font-size:${props => props.theme.fontSizes.s};
+    font-size:${props => props.theme.fontSizes.m};
 }`
 
 const Subtitulo = styled.h3`
@@ -98,10 +112,17 @@ const Subtitulo = styled.h3`
  
  }
  @media ${props => props.theme.breakpoints.small}{ 
-    font-size:8px;
+    font-size:15px;
  }
  `
-
+ 
+ const Note =styled.span`
+ @media ${props => props.theme.breakpoints.medium}{ 
+ font-size:${props => props.theme.fontSizes.xs};
+ 
+ }
+ 
+`
 const MovieDetails = () => {
 
 
@@ -126,6 +147,7 @@ const MovieDetails = () => {
     
     `
 
+
     return (
         <Div>
             {video.length > 0
@@ -143,23 +165,33 @@ const MovieDetails = () => {
                 < DivInfo>
                     <DivTitle>
                         <Title>{movies.title}</Title>
-                        {video.length > 0 ? <Button
+                        {video.length > 0 ? 
+                         <ThemeProvider theme={theme}>
+                            <Button
                             variant="contained"
                             color="primary"
                             size="small"
+                           
+                         
+                            
                             onClick={() => setOpen(true)}>
-                            <PlayCircleFilledRoundedIcon />
+                            <PlayCircleFilledRoundedIcon 
+                            fontSize="small"/>
                                 Ver Trailer
                                 </Button>
-                            : <Button
+                                </ThemeProvider>
+                            : <ThemeProvider theme={theme}><Button
                                 variant="contained"
                                 color="secondary"
                                 size="small"
-                                
+                              
+                               
                                 onClick={() => setOpen(true)}>
-                                <PlayCircleFilledRoundedIcon />
-                                Trailer no diponible
-                                </Button>}
+                                <PlayCircleFilledRoundedIcon
+                                fontSize="small"/>
+                                <Note>Trailer no disponible</Note>
+                                        
+                                </Button></ThemeProvider>}
                     </DivTitle>
                     <Subtitulo>General</Subtitulo>
                     <p>{movies.overview || 'Descripcion no disponible'}</p>

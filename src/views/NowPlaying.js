@@ -10,7 +10,7 @@ import CustomPagination from '../components/CustomPagination';
 
 const NowPlaying = () => {
 
-   // const params = useParams()
+   
     const [pages, setPages] = useState(1)
 
     const [ movie, numOfPages,  loading] = useFetch(URL_NOW_PLAYING + `${pages}`)

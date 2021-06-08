@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 
 const useFetch = (url) => {
   const [movies, setMovie] = useState([])
+  const [loading, setLoading] = useState(false)
   const [numOfPages, setNumOfPages] = useState();
-  const [loading,setLoading]= useState(false)
+
+  
 
   useEffect(() => {
     setLoading(true)
@@ -12,12 +14,12 @@ const useFetch = (url) => {
       .then(data => {
         setMovie(data.results || data)
         window.scroll(0, 0)
-        setLoading(false)
         setNumOfPages(data.total_pages)
-        
+        setLoading(false)
+
       })
   }, [url, numOfPages])
-  return [movies, numOfPages , loading ,]
+return [movies,numOfPages, /*loading*/]
 }
 
 export default useFetch

@@ -11,6 +11,7 @@ const CustomPagination = ({ setPages, numOfPages = 20 }) => {
     const handlePageChange = (pages) => {
         setPages(pages)
         window.scroll(0, 0)
+        console.log(pages);
     }
 
     return (
@@ -20,6 +21,7 @@ const CustomPagination = ({ setPages, numOfPages = 20 }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 marginTop: 10,
+                marginBottom:20,
             }}>
             <ThemeProvider theme={darkTheme}>
                 <Pagination
