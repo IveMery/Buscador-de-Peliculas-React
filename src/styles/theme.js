@@ -20,6 +20,8 @@ export const theme = {
         marginLeft:'30px',
     },
     fontSizes:{
+        xxxl:'40px',
+        xxl:'30px',
         xl:'25px',
         l:'20px',
         m:'15px',
@@ -31,7 +33,9 @@ export const theme = {
     breakpoints:{
         large:'screen and (max-width:900px)',
         medium:'(max-width:650px)',
-        small: '(min-width:320px) and  (max-width:360px)'
+        small: '(min-width:320px) and  (max-width:360px)',
+        extraSmall: '(min-width:270px) and  (max-width:319px)'
+        
     }
 
 }
