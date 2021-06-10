@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Cards from '../components/Cards'
 import { ResultsHome } from '../utils/variables'
 import styled from 'styled-components';
-import { FlexCenter, Title , StyledLink} from '../styles/Commons'
+import { FlexCenter, Title, StyledLink } from '../styles/Commons'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const Div = styled.div`
@@ -38,7 +38,7 @@ const Trending = () => {
                 setmovies(ResultsHome(data.results)))
     }, [])
 
-  return (
+    return (
         <Div>
             <StyledLink to='/TrendingDetails'>
                 <DivTitle>
@@ -58,7 +58,6 @@ const Trending = () => {
                         />
                     </StyledLink>
                 ))}
-
             </FlexCenter>
         </Div>
     )

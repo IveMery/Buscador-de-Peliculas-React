@@ -23,7 +23,6 @@ export const FlexColumn = styled.div`
   flex-direction:column;
   padding:2px;
 `
-
 export const Title = styled.h5`
 font-family: ${props => props.theme.fonts.titulos};
 color:${props => props.theme.colors.textPrimary};

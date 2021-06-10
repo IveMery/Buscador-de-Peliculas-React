@@ -8,20 +8,15 @@ import ModalVideo from "react-modal-video"
 import '../styles/modal.css'
 import useFetch from '../hooks/useFetch'
 
-
 const theme = createMuiTheme({
     typography: {
         fontSize: 13,
-      
     },
-  
-  })
-
+})
 
 const DivContainer = styled.div`
 display:flex;
 justify-content:center;
-//padding-top:30px;
 padding-top:0;
 flex-wrap:wrap;
 height:auto;
@@ -33,13 +28,13 @@ background-color:rgba(54, 53, 53, 0.664);
 height:100%;
 
 @media (max-width:650px){ 
-    flex-direction: column;
-    align-items:center;
+    flex-direction:${props => props.theme.FlexColumnResponsive.column};
+    align-items:${props => props.theme.FlexColumnResponsive.alignItems};
 } 
 
 @media ${props => props.theme.breakpoints.small}{ 
-    flex-direction: column;
-    align-items:center;
+    flex-direction:${props => props.theme.FlexColumnResponsive.column};
+    align-items:${props => props.theme.FlexColumnResponsive.alignItems};
 }`
 
 const DivImgContainer = styled.div`
@@ -72,7 +67,7 @@ const DivInfo = styled.div`
 @media ${props => props.theme.breakpoints.medium}{
   font-size:${props => props.theme.fontSizes.m};
   width:200px;
-  overflow:scroll
+  overflow-y:scroll
 }
 
 @media ${props => props.theme.breakpoints.small}{ 
@@ -84,7 +79,7 @@ const DivTitle = styled.div`
   display:flex;
   justify-content:space-between;
   margin-bottom:20px;
-  font-size:10px;
+  font-size:${props => props.theme.fontSizes.s};
  
 
 @media ${props => props.theme.breakpoints.medium}{ 
@@ -95,61 +90,56 @@ const DivTitle = styled.div`
     font-size:${props => props.theme.fontSizes.m};}`
 
 const Title = styled.h2`
-font-size:25px;
+font-size:${props => props.theme.fontSizes.xl};
 @media ${props => props.theme.breakpoints.medium}{ 
- font-size:${props => props.theme.fontSizes.m};}
- margin-right:5px;
-
- @media ${props => props.theme.breakpoints.small}{
+ font-size:${props => props.theme.fontSizes.m};
+ margin-right:5px;;
+}
+ 
+@media ${props => props.theme.breakpoints.small}{
     font-size:${props => props.theme.fontSizes.m};
 }`
 
 const Subtitulo = styled.h3`
  font-size:${props => props.theme.fontSizes.l};
 
- @media ${props => props.theme.breakpoints.medium}{ 
+@media ${props => props.theme.breakpoints.medium}{ 
  font-size:${props => props.theme.fontSizes.l};
  
  }
  @media ${props => props.theme.breakpoints.small}{ 
-    font-size:15px;
+    font-size:${props => props.theme.fontSizes.m};
  }
  `
- 
- const Note =styled.span`
- @media ${props => props.theme.breakpoints.medium}{ 
+
+const Note = styled.span`
+@media ${props => props.theme.breakpoints.medium}{ 
  font-size:${props => props.theme.fontSizes.xs};
- 
  }
- 
+`
+
+const Div = styled.div`
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+height:100vh;
+color:${props => props.theme.colors.textSecondary};
+display:flex;
+justify-content:center;
+align-items:center;
 `
 const MovieDetails = () => {
-
-
     const params = useParams()
     const [isOpen, setOpen] = useState(false)
     const [movies] = useFetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=6c78ff8e971663d6ee470502622fe044&language=es-ES&page=1`)
     const [video] = useFetch(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=c7e318bc4679faa16a6f940e1435e019&languaje=es-ES`)
 
-    //const backdrop_path = `https://image.tmdb.org/t/p/original/${movies.backdrop_path}`
-    // const poster_path = `https://image.tmdb.org/t/p/original/${movies.poster_path}`
-    const Div = styled.div`
-    background:url(${`https://image.tmdb.org/t/p/original/${movies.backdrop_path}`});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height:100vh;
-    color:white;
-    display:flex;
-    justify-content:center;
-    //padding-top:40px;
-    zoom: 1;
-    
-    `
+    const backdropPath = `https://image.tmdb.org/t/p/original/${movies.backdrop_path}`
 
 
+    //background:url(${`https://image.tmdb.org/t/p/original/${movies.backdrop_path}`});
     return (
-        <Div>
+        <Div style={{ background: `url("${backdropPath}")` }}>
             {video.length > 0
                 && <ModalVideo
                     channel='youtube'
@@ -165,33 +155,33 @@ const MovieDetails = () => {
                 < DivInfo>
                     <DivTitle>
                         <Title>{movies.title}</Title>
-                        {video.length > 0 ? 
-                         <ThemeProvider theme={theme}>
-                            <Button
-                            variant="contained"
-                            color="primary"
-                            size="small"
-                           
-                         
-                            
-                            onClick={() => setOpen(true)}>
-                            <PlayCircleFilledRoundedIcon 
-                            fontSize="small"/>
+                        {video.length > 0 ?
+                            <ThemeProvider theme={theme}>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    size="small"
+
+
+
+                                    onClick={() => setOpen(true)}>
+                                    <PlayCircleFilledRoundedIcon
+                                        fontSize="small" />
                                 Ver Trailer
                                 </Button>
-                                </ThemeProvider>
+                            </ThemeProvider>
                             : <ThemeProvider theme={theme}><Button
                                 variant="contained"
                                 color="secondary"
                                 size="small"
-                              
-                               
+
+
                                 onClick={() => setOpen(true)}>
                                 <PlayCircleFilledRoundedIcon
-                                fontSize="small"/>
+                                    fontSize="small" />
                                 <Note>Trailer no disponible</Note>
-                                        
-                                </Button></ThemeProvider>}
+
+                            </Button></ThemeProvider>}
                     </DivTitle>
                     <Subtitulo>General</Subtitulo>
                     <p>{movies.overview || 'Descripcion no disponible'}</p>

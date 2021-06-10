@@ -6,15 +6,14 @@ import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
 import CustomPagination from '../components/CustomPagination';
 import Loading from '../components/Loading'
 
-
 const TrendingDetails = () => {
 
     const [pages, setPages] = useState(1)
-    const [ movie, numOfPages, loading] = useFetch(URL_TRENDING_DETAILS + `${pages}`)
+    const [movie, numOfPages, loading] = useFetch(URL_TRENDING_DETAILS + `${pages}`)
 
     return (
         <Div>
-            { loading ?
+            {loading ?
                 <Loading /> :
                 <>
                     <Title>TENDENCIA</Title>
@@ -33,7 +32,6 @@ const TrendingDetails = () => {
                     { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
                 </>
             }
-
         </Div>
     )
 }

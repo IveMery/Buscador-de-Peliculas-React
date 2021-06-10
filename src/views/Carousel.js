@@ -19,30 +19,37 @@ width: 70%;
 padding: 20px;
 
 @media ${props => props.theme.breakpoints.small}{ 
-   // margin-left:${props => props.theme.marginTitlesResponsive.marginLeft} 
   margin-top:10px;
- }
+}
+`
+const Title = styled.h3`
 
-`
-const Title =styled.h3`
 @media ${props => props.theme.breakpoints.medium}{ 
-    font-size:10px;
-        
- 
- }
- @media ${props => props.theme.breakpoints.small}{ 
+    font-size:${props => props.theme.fontSizes.m};
+}
+
+@media ${props => props.theme.breakpoints.small}{ 
    
-   font-size:8px;
- }
+   font-size:${props => props.theme.fontSizes.xs};
+}
+
+@media ${props => props.theme.breakpoints.small}{
+    font-size:${props => props.theme.fontSizes.xs};
+}
 `
-const Description =styled.p`
+const Description = styled.p`
 @media ${props => props.theme.breakpoints.medium}{ 
-  font-size:10px;
+  font-size:${props => props.theme.fontSizes.s};
         
  
- }
+}
  @media ${props => props.theme.breakpoints.small}{ 
-  font-size:8px;}
+  font-size:${props => props.theme.fontSizes.xs};
+}
+
+@media ${props => props.theme.breakpoints.small}{
+    font-size:${props => props.theme.fontSizes.xs};
+}
 `
 
 const Carrusel = () => {

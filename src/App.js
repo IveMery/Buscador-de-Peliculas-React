@@ -22,7 +22,6 @@ body{
   background-color:${props => props.theme.background.primary};
 }
 `
-
 const App = () => {
   return (
     <>

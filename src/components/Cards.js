@@ -15,10 +15,10 @@ const Cards = ({ title, poster_path, }) => {
     root: {
       margin: 10,
       width: 230,
-      color:'white',
-      background:'rgb(54, 57, 63)',
-      border:'none',
-     //fontFamily:'Varela Round',
+      color: 'white',
+      background: 'rgb(54, 57, 63)',
+      border: 'none',
+      //fontFamily:'Varela Round',
 
     },
     media: {
@@ -27,12 +27,9 @@ const Cards = ({ title, poster_path, }) => {
       transition: 'all 0.2s ease-in',
       '&:hover': {
         transform: ' scale(1.1) ',
-
       },
 
     },
-
-
     title: {
       fontSize: 14,
       overflow: 'hidden',
@@ -46,15 +43,16 @@ const Cards = ({ title, poster_path, }) => {
   })
 
   const classes = useStyles();
- // poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`
+  // poster_path = `https://image.tmdb.org/t/p/original/${poster_path}`
   return (
     <>
       <Card className={classes.root} variant="outlined" >
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={ poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : "https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg"}
+            image={poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : "https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg"}
             title={title}
+            alt={title}
           />
           <CardContent>
             <Typography gutterBottom variant="h6" component="h2" className={classes.title} overflow='hidden'>
