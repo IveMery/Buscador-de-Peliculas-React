@@ -13,8 +13,7 @@ const NowPlaying = () => {
     const [movie, numOfPages, loading] = useFetch(URL_NOW_PLAYING + `${pages}`)
     return (
         <Div >
-            {
-                loading ? <Loading /> :
+           {loading && <Loading />} 
                     <>
                         <Title>ULTIMOS LANZAMIENTOS</Title>
                         <FlexCenter>
@@ -30,7 +29,6 @@ const NowPlaying = () => {
                         </FlexCenter>
                         { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
                     </>
-            }
         </Div>
     )
 }

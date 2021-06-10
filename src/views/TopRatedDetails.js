@@ -12,7 +12,9 @@ const TopRatedDetails = () => {
     const [movie, numOfPages, loading] = useFetch(URL_TOPRATED_DETAILS + `${pages}`)
     return (
         <Div>
-            {loading ? <Loading /> : <> <Title>MEJOR PUNTUADAS</Title>
+               {loading && <Loading />} 
+               <>
+               <Title>MEJOR PUNTUADAS</Title>
                 <FlexCenter>
                     {movie?.map((movie) => (
                         <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
@@ -25,7 +27,8 @@ const TopRatedDetails = () => {
                         </StyledLink>
                     ))}
                 </FlexCenter>
-                {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}</>}
+                {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
+                </>
         </Div>
     )
 }

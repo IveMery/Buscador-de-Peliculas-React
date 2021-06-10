@@ -13,8 +13,7 @@ const TrendingDetails = () => {
 
     return (
         <Div>
-            {loading ?
-                <Loading /> :
+            {loading && <Loading />} 
                 <>
                     <Title>TENDENCIA</Title>
                     <FlexCenter>
@@ -31,7 +30,7 @@ const TrendingDetails = () => {
                     </FlexCenter>
                     { numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
                 </>
-            }
+            
         </Div>
     )
 }

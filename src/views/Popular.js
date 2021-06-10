@@ -13,7 +13,7 @@ const Populares = () => {
 
     return (
         <Div>
-            {loading ? <Loading /> : <>
+            {loading && <Loading />} <>
                 <Title>POPULARES</Title>
                 <FlexCenter>
                     {movies?.map((movie) => (
@@ -27,7 +27,7 @@ const Populares = () => {
                         </StyledLink>
                     ))}
                 </FlexCenter>
-                {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}</>}
+                {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}</>
         </Div>
     )
 }
