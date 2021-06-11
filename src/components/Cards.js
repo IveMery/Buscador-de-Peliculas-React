@@ -2,12 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-//import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-//import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-//import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 
 const Cards = ({ title, poster_path, }) => {
 
@@ -18,8 +15,7 @@ const Cards = ({ title, poster_path, }) => {
       color: 'white',
       background: 'rgb(54, 57, 63)',
       border: 'none',
-      //fontFamily:'Varela Round',
-
+      fontFamily: 'Varela Round',
     },
     media: {
       height: 340,
@@ -28,7 +24,6 @@ const Cards = ({ title, poster_path, }) => {
       '&:hover': {
         transform: ' scale(1.1) ',
       },
-
     },
     title: {
       fontSize: 14,
@@ -60,11 +55,6 @@ const Cards = ({ title, poster_path, }) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        {/* <CardActions className={classes.buttton}>
-          <Button size="small" color="inherit" >
-            <VisibilityOutlinedIcon />
-          </Button>
-        </CardActions> */}
       </Card>
     </>
   );

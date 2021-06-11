@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Cards from '../components/Cards'
-
 import { ResultsHome } from '../utils/variables'
+import Cards from '../components/Cards'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import styled from 'styled-components';
 import { FlexCenter, Title, StyledLink } from '../styles/Commons'
-// import MejorPuntuadasDetalle from './MejorPuntuadasDetalle'
-// import useFetch from '../hooks/useFetch'
 
 const Div = styled.div`
 background-color:${props => props.theme.background.primary};

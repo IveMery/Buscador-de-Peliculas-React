@@ -10,6 +10,7 @@ const Search = () => {
     const [search, setSearch] = useState('')
     const [movies, setMovies] = useState([])
     const [numOfPages, setNumOfPages] = useState();
+
     const handleChange = e => setSearch(e.target.value)
     const handleSubmit = e => e.preventDefault()
 
@@ -43,6 +44,7 @@ const Search = () => {
             }
         },
     })
+
     const classes = useStyles();
 
     return (
@@ -57,7 +59,6 @@ const Search = () => {
                         InputProps={{
                             style: { color: 'white' }
                         }}
-
                         label=' ej los simpsons...'
                         onChange={handleChange}
                         value={search}
@@ -68,18 +69,16 @@ const Search = () => {
             </FlexColumn>
             {search && <Title>Resultados</Title>}
             <FlexCenter>
-                {
-                    movies.map((movie) => (
-                        <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
-                            <Cards
-                                title={movie.title}
-                                poster_path={movie.poster_path}
-                                key={movie.id}
-                                id={movie.id}
-                            />
-                        </StyledLink>
-                    ))
-                }
+                {movies.map((movie) => (
+                    <StyledLink to={`/MovieDetails/${movie.id}`} key={movie.id}>
+                        <Cards
+                            title={movie.title}
+                            poster_path={movie.poster_path}
+                            key={movie.id}
+                            id={movie.id}
+                        />
+                    </StyledLink>
+                ))}
             </FlexCenter>
             {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
         </Div>

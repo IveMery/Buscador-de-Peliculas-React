@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Cards from '../components/Cards'
 import { ResultsHome } from '../utils/variables'
+import Cards from '../components/Cards'
 import styled from 'styled-components';
 import { FlexCenter, Title, StyledLink } from '../styles/Commons'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -21,12 +21,11 @@ margin-top:20px;
 
 @media ${props => props.theme.breakpoints.medium}{ 
     margin-left:${props => props.theme.marginTitlesResponsive.marginLeft} 
-        
- 
- }
+}
+
  @media ${props => props.theme.breakpoints.small}{ 
     margin-left:${props => props.theme.marginTitlesResponsive.marginLeft} 
- }
+}
 `
 const Trending = () => {
     const [movies, setmovies] = useState([])
@@ -62,6 +61,5 @@ const Trending = () => {
         </Div>
     )
 }
-
 
 export default Trending

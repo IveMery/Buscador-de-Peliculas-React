@@ -27,7 +27,8 @@ margin-top:20px;
 
 @media ${props => props.theme.breakpoints.small}{ 
     font-size:${props => props.theme.fontSizes.l};
-}`
+}` 
+
 const Img = styled.img`
 width:100%;
 height:auto;

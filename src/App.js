@@ -1,13 +1,12 @@
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
-import './App.css';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { theme } from './styles/theme'
 import Home from './components/Home'
 import NowPlaying from "./views//NowPlaying";
 import Popular from "./views/Popular";
 import Error404 from "./components/Error404";
 import Search from "./views//Search";
 import MovieDetails from "./views/MovieDetails"
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { theme } from './styles/theme'
 import TrendingDetails from "./views/TrendingDetails";
 import TopRatedDetails from "./views/TopRatedDetails";
 import ContainerNav from "./components/ContainerNav";
@@ -16,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
 *{
   box-sizing:border-box;
   margin:0;
- 
 }
 body{
   background-color:${props => props.theme.background.primary};
@@ -25,9 +23,8 @@ body{
 const App = () => {
   return (
     <>
-     
       <ThemeProvider theme={theme}>
-      <GlobalStyle />
+        <GlobalStyle />
         <Router>
           <ContainerNav />
           <Switch>

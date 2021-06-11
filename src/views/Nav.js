@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-    const Navbar = styled.ul`
+const Navbar = styled.ul`
     margin-bottom: 0;
     display:flex;
     flex-wrap:wrap;
@@ -23,10 +23,8 @@ import CancelIcon from '@material-ui/icons/Cancel';
         background-color: rgb(35, 39, 42);
     }`
 
-    const NavItem = styled.li`
-     
-    /* margin-right: 10px; */
-    font-family: Bebas Neue;
+const NavItem = styled.li`
+    font-family: 'Bebas Neue','sans-serif';
     font-size: 20px; 
     list-style:none;
     padding:10px;
@@ -37,7 +35,6 @@ import CancelIcon from '@material-ui/icons/Cancel';
         transition: 0.3s ease-in;
         border-radius:1px;
         height:45px;
-        //padding:10px;
         border-radius:5px;
     }
     
@@ -46,7 +43,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
         margin-bottom:30px;
     }`
 
-    const BtnMenu = styled.button`
+ const BtnMenu = styled.button`
     display:none;
     padding:20px;
     height:59px;
@@ -63,7 +60,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
     font-size:2rem;
     }
     `
-    const Nav = () => {
+ const Nav = () => {
 
     const [click, setClick] = useState(false);
 
@@ -74,7 +71,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
     return (
         <>
             <BtnMenu onClick={() => openMenu()}>
-                {click ? <CancelIcon fontSize='large' color='secondary' /> : <MenuRoundedIcon fontSize='large' color='secondary' />}
+                {click ? <CancelIcon aria-label='close menu' fontSize='large' color='secondary' /> : <MenuRoundedIcon aria-label='menu' fontSize='large' color='secondary' />}
             </BtnMenu>
             <Navbar click={click}>
                 <NavItem onClick={() => openMenu()}><StyledLink to='/'>Inicio</StyledLink></NavItem>

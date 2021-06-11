@@ -5,7 +5,7 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(false)
   const [numOfPages, setNumOfPages] = useState();
 
-useEffect(() => {
+  useEffect(() => {
     setLoading(true)
     fetch(url)
       .then(res => res.json())
@@ -14,10 +14,9 @@ useEffect(() => {
         window.scroll(0, 0)
         setNumOfPages(data.total_pages)
         setLoading(false)
-
       })
   }, [url, numOfPages])
-return [movies,numOfPages, loading]
+  return [movies, numOfPages, loading]
 }
 
 export default useFetch

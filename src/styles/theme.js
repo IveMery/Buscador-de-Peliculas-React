@@ -1,7 +1,6 @@
 export const theme = {
     background: {
         primary: 'rgb(54, 57, 63)',
-
     },
     fonts: {
         titulos: 'Goblin One',
@@ -10,7 +9,7 @@ export const theme = {
     },
     colors: {
         textPrimary: '#ffe5e2',
-        textSecondary: 'white'
+        textSecondary: '#fff'
     },
     marginTitles: {
         margin: '0 0 20px 0',
@@ -34,10 +33,7 @@ export const theme = {
         small: '(min-width:320px) and  (max-width:360px)',
         extraSmall: '(min-width:270px) and  (max-width:319px)'
     }, FlexColumnResponsive: {
-
         column: 'column',
         alignItems: 'center',
-
     }
-
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Cards from '../components/Cards'
 import useFetch from '../hooks/useFetch'
 import { URL_POPULAR } from '../utils/variables'
+import Cards from '../components/Cards'
 import { FlexCenter, Title, Div, StyledLink } from '../styles/Commons'
 import CustomPagination from '../components/CustomPagination';
 import Loading from '../components/Loading'
@@ -13,7 +13,8 @@ const Populares = () => {
 
     return (
         <Div>
-            {loading && <Loading />} <>
+            {loading && <Loading />}
+            <>
                 <Title>POPULARES</Title>
                 <FlexCenter>
                     {movies?.map((movie) => (
@@ -27,7 +28,8 @@ const Populares = () => {
                         </StyledLink>
                     ))}
                 </FlexCenter>
-                {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}</>
+                {numOfPages > 1 && <CustomPagination setPages={setPages} numOfPages={numOfPages} />}
+            </>
         </Div>
     )
 }
