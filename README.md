@@ -1,6 +1,6 @@
 # Bucador de películas
 
-Este es mi ultimo proyecto del bootcamp de ADAITW y el primer trabajo formal de react,
+Este es mi último proyecto del bootcamp de ADAITW y el primer trabajo formal de react,
 donde creamos una aplicación que permite conectarnos a una Api [The Movie Database](https://developers.themoviedb.org/3/getting-started/introduction)
 pusimos en práctica el uso de hooks, custom hooks, useState, useEffect, react-router etc.
 
