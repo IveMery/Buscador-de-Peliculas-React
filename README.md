@@ -25,7 +25,7 @@ pusimos en práctica el uso de hooks, custom hooks, useState, useEffect, react-r
 - React Typed
 - Deployado con Vercel
 
-Puedes ver el link  del Buscador de películas Aqui acá  --> [Buscador de Películas](https://buscador-de-peliculas-two.vercel.app)
+Puedes ver el link  del Buscador de películas acá  --> [Buscador de Películas](https://buscador-de-peliculas-two.vercel.app)
 
 ### AUTOR
 
